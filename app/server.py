@@ -83,12 +83,22 @@ def index(request):
     html = path/'view'/'index.html'
     return HTMLResponse(html.open().read())
 
+#@app.route('/analyze', methods=['POST'])
+#async def analyze(request):
+ #   data = await request.form()
+#    img_bytes = await (data['file'].read())
+#    img = open_image(BytesIO(img_bytes))
+#    return JSONResponse({'result': learn.predict(img)[0]})
+	
+	
+	
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    return JSONResponse({'result': learn.predict(img)[0]})
+    prediction = learn.predict(img)[0]
+    return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
