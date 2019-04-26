@@ -25,7 +25,7 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-	tfms = get_transforms(do_flip=True, flip_vert=True)
+    tfms = get_transforms(do_flip=True, flip_vert=True)
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     data_bunch = ImageDataBunch.single_from_classes(path, classes,
         ds_tfms=tfms, size=256).normalize(imagenet_stats)
