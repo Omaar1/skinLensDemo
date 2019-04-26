@@ -25,14 +25,27 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-    tfms = get_transforms(do_flip=True, flip_vert=True)
+#    tfms = get_transforms(do_flip=True, flip_vert=True)
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
-    data_bunch = ImageDataBunch.single_from_classes(path, classes,
-        ds_tfms=tfms, size=256).normalize(imagenet_stats)
-    learn = cnn_learner(data_bunch, models.resnet50, pretrained=False)
-    learn.load(model_file_name)
-    return learn
+    try:
+        learn = load_learner(path, model_file_name)
+        return learn
+    except RuntimeError as e:
+        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+            print(e)
+            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
+            raise RuntimeError(message)
+        else:
+            raise    
+#	data_bunch = ImageDataBunch.single_from_classes(path, classes,
+#        ds_tfms=tfms, size=256).normalize(imagenet_stats)
+    
+#	learn = cnn_learner(data_bunch, models.resnet50, pretrained=False)
+#    learn.load(model_file_name)
+#   return learn
 
+	
+	
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
