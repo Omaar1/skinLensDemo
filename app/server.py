@@ -8,14 +8,24 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://drive.google.com/uc?export=download&id=19hahMQSIlw-R8W5S_FP-LyIAP5-LKoid'
-model_file_name = 'model'
+#model_file_url = 'https://drive.google.com/uc?export=download&id=19hahMQSIlw-R8W5S_FP-LyIAP5-LKoid'
+#model_file_name = 'model'
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 path = Path(__file__).parent
+
+
+export_file_url = 'https://drive.google.com/uc?export=download&id=1WsbgjXCilxZC_fpSEMtRAY_rvr8Omyv4'
+export_file_name = 'export.pkl'
+
+path = Path(__file__).parent
+
+
 
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
+
+
 
 async def download_file(url, dest):
     if dest.exists(): return
@@ -24,11 +34,12 @@ async def download_file(url, dest):
             data = await response.read()
             with open(dest, 'wb') as f: f.write(data)
 
+			
+			
 async def setup_learner():
-#    tfms = get_transforms(do_flip=True, flip_vert=True)
-    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+    await download_file(export_file_url, path/export_file_name)
     try:
-        learn = load_learner(path, model_file_name)
+        learn = load_learner(path, export_file_name)
         return learn
     except RuntimeError as e:
         if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
@@ -36,7 +47,23 @@ async def setup_learner():
             message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
             raise RuntimeError(message)
         else:
-            raise    
+            raise
+			
+			
+			
+#async def setup_learner():
+#    tfms = get_transforms(do_flip=True, flip_vert=True)
+#    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+ #   try:
+    #    learn = load_learner(path, model_file_name)
+  #      return learn
+  #  except RuntimeError as e:
+  #      if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+    #        print(e)
+   #         message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
+    #        raise RuntimeError(message)
+    #    else:
+     #       raise    
 #	data_bunch = ImageDataBunch.single_from_classes(path, classes,
 #        ds_tfms=tfms, size=256).normalize(imagenet_stats)
     
