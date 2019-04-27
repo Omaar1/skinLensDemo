@@ -8,8 +8,6 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-#model_file_url = 'https://drive.google.com/uc?export=download&id=19hahMQSIlw-R8W5S_FP-LyIAP5-LKoid'
-#model_file_name = 'model'
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 path = Path(__file__).parent
 
@@ -49,28 +47,6 @@ async def setup_learner():
         else:
             raise
 			
-			
-			
-#async def setup_learner():
-#    tfms = get_transforms(do_flip=True, flip_vert=True)
-#    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
- #   try:
-    #    learn = load_learner(path, model_file_name)
-  #      return learn
-  #  except RuntimeError as e:
-  #      if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
-    #        print(e)
-   #         message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
-    #        raise RuntimeError(message)
-    #    else:
-     #       raise    
-#	data_bunch = ImageDataBunch.single_from_classes(path, classes,
-#        ds_tfms=tfms, size=256).normalize(imagenet_stats)
-    
-#	learn = cnn_learner(data_bunch, models.resnet50, pretrained=False)
-#    learn.load(model_file_name)
-#   return learn
-
 	
 	
 loop = asyncio.get_event_loop()
@@ -83,13 +59,6 @@ def index(request):
     html = path/'view'/'index.html'
     return HTMLResponse(html.open().read())
 
-#@app.route('/analyze', methods=['POST'])
-#async def analyze(request):
- #   data = await request.form()
-#    img_bytes = await (data['file'].read())
-#    img = open_image(BytesIO(img_bytes))
-#    return JSONResponse({'result': learn.predict(img)[0]})
-	
 	
 	
 @app.route('/analyze', methods=['POST'])
@@ -101,7 +70,7 @@ async def analyze(request):
     p1 = prediction[0]
     p2 = prediction[2].numpy().tolist()
     strp2 = ','.join(str(e) for e in p2)
-    return JSONResponse({'result': strp2})
+    return JSONResponse({'result': str(p1),'conf':strp2})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
