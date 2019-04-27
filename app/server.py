@@ -32,8 +32,8 @@ async def download_file(url, dest):
             data = await response.read()
             with open(dest, 'wb') as f: f.write(data)
 
-			
-			
+
+
 async def setup_learner():
     await download_file(export_file_url, path/export_file_name)
     try:
@@ -46,9 +46,9 @@ async def setup_learner():
             raise RuntimeError(message)
         else:
             raise
-			
-	
-	
+
+
+
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
@@ -59,8 +59,8 @@ def index(request):
     html = path/'view'/'index.html'
     return HTMLResponse(html.open().read())
 
-	
-	
+
+
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     data = await request.form()
@@ -74,4 +74,3 @@ async def analyze(request):
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
-
