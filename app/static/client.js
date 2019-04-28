@@ -28,17 +28,27 @@ function analyze() {
 			console.log(response.result);
 			// console.log(response.conf);
 			//console.log(e.target.responseText);
+      var arr1 = [];
       str1 = response.conf;
       myArray = str1.split(',')
 
       myArray.forEach(function(element) {
   	  x= parseFloat(element);
       y=Number((x).toFixed(6));
+      arr1.push(y);
 	    console.log(y);
-  	  console.log('\n');
       });
-            el('result-label').innerHTML = `Result = ${response['result']}`;
-			      el('conf-label').innerHTML = `Result = ${response['conf']}`;
+      console.log('\n array = ');
+      console.log(arr1);
+
+      el('result-label').innerHTML = `Result = ${response['result']}`;
+			el('akiec-label').innerHTML =  arr1[0];
+      el('bcc-label').innerHTML   =  arr1[1];
+      el('bkl-label').innerHTML   =  arr1[2];
+      el('df-label').innerHTML    =  arr1[3];
+      el('mel-label').innerHTML   =  arr1[4];
+      el('nv-label').innerHTML    =  arr1[5];
+      el('vasc-label').innerHTML  =  arr1[6];
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
@@ -47,3 +57,4 @@ function analyze() {
     fileData.append('file', uploadFiles[0]);
     xhr.send(fileData);
 }
+//classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
