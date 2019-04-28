@@ -29,7 +29,7 @@ function analyze() {
 			console.log(response.conf);
 			//console.log(e.target.responseText);
             el('result-label').innerHTML = `Result = ${response['result']}`;
-			     // el('conf-label').innerHTML = `Result = ${response['conf']}`;
+			      el('conf-label').innerHTML = `Result = ${response['conf']}`;
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
