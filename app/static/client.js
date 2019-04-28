@@ -34,8 +34,8 @@ function analyze() {
       myArray.forEach(function(element) {
   	  x= parseFloat(element);
       y=Number((x).toFixed(6));
-	    document.write(y);
-  	  document.write('\n');
+	    console.log(y);
+  	  console.log('\n');
       });
             el('result-label').innerHTML = `Result = ${response['result']}`;
 			      el('conf-label').innerHTML = `Result = ${response['conf']}`;
