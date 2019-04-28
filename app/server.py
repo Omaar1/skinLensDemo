@@ -12,7 +12,7 @@ classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 path = Path(__file__).parent
 
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1WsbgjXCilxZC_fpSEMtRAY_rvr8Omyv4'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1smQEO1X_xXpJfxGOaVR0n7PQEmkucuPi'
 export_file_name = 'export.pkl'
 
 path = Path(__file__).parent
