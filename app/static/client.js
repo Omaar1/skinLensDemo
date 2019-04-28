@@ -26,8 +26,17 @@ function analyze() {
             var response = JSON.parse(e.target.responseText);
 			console.log(response);
 			console.log(response.result);
-			console.log(response.conf);
+			// console.log(response.conf);
 			//console.log(e.target.responseText);
+      str1 = response.conf;
+      myArray = str1.split(',')
+
+      myArray.forEach(function(element) {
+  	  x= parseFloat(element);
+      y=Number((x).toFixed(6));
+	    document.write(y);
+  	  document.write('\n');
+      });
             el('result-label').innerHTML = `Result = ${response['result']}`;
 			      el('conf-label').innerHTML = `Result = ${response['conf']}`;
         }
