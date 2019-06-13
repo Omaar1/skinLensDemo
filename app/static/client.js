@@ -17,19 +17,21 @@ function showPicked(input) {    //  takes a file as input (image file ! )
 function analyze() {  // on click of analze btn --> function is triggered
     var uploadFiles = el('file-input').files;
     if (uploadFiles.length != 1) alert('Please select 1 file to analyze!');
-
     el('analyze-button').innerHTML = 'Analyzing...';
+
     var xhr = new XMLHttpRequest();
     var loc = window.location
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true); // go to " /analyze "
+
     xhr.onerror = function() {alert (xhr.responseText);}
+
     xhr.onload = function(e) {
         if (this.readyState === 4) {
             var response = JSON.parse(e.target.responseText);
 			console.log(response);
 			console.log(response.result);
 			// console.log(response.conf);
-			//console.log(e.target.responseText);
+			console.log(e.target.responseText);
       var arr1 = [];
       str1 = response.conf;
       myArray = str1.split(',')
