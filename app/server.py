@@ -73,7 +73,7 @@ async def analyze(request):
     p1 = prediction[0]
     p2 = prediction[2].numpy().tolist()
     strp2 = ','.join(str(e) for e in p2)
-    return JSONResponse({'result': str(p1),'conf':"any , shit , strp2 , aaa , s s, zzz , jjj"})
+    return JSONResponse({'result': str(p1),'conf':strp2})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
