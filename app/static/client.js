@@ -29,9 +29,9 @@ function analyze() {  // on click of analze btn --> function is triggered
         if (this.readyState === 4) {
             var response = e.target.responseText;
       			console.log(response);
-      			console.log(response.result);
-      			console.log(response.conf);
-      			console.log(e.target.responseText);
+      	//		console.log(response.result);
+      	//		console.log(response.conf);
+      	//		console.log(e.target.responseText);
         //     var arr1 = [];
         //     str1 = response.conf;
         //     myArray = str1.split(',')
