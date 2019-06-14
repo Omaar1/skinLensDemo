@@ -27,7 +27,7 @@ function analyze() {  // on click of analze btn --> function is triggered
 
     xhr.onload = function(e) {
         if (this.readyState === 4) {
-            var response = JSON.parse(e.target.responseText);
+            var response = e.target.responseText;
       			console.log(response);
       			console.log(response.result);
       			// console.log(response.conf);
