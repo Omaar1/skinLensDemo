@@ -1,4 +1,5 @@
-torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+-f https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp27-cp27mu-linux_x86_64.whl
+torchvision
 fastai
 starlette
 uvicorn
