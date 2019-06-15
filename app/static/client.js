@@ -48,7 +48,7 @@ function analyze() {  // on click of analze btn --> function is triggered
 
     xhr.onerror = function() {
       alert (xhr.responseText);
-      return
+      return;
     };
 
     xhr.onload = function(e) {

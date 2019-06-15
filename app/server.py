@@ -4,6 +4,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 import uvicorn, aiohttp, asyncio
 from io import BytesIO
+import logging
 
 
 from fastai import *
@@ -61,23 +62,30 @@ loop.close()
 @app.route('/')
 def index(request):
     html = path/'view'/'index.html'
+    logging.info('*******Thisstart*******')
     return HTMLResponse(html.open().read())
 
 
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    print("*********before************")
+    logging.info('*******This is an info message*******')
     data = await request.form()
-    print('*******!!!startAnalyze!!!********')
-    print(data)
+    logging.info('*******!!!startAnalyze!!!********')
+    # logging.info(data)
     img_bytes = await (data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)
-    p1 = prediction[0]
-    p2 = prediction[2].numpy().tolist()
-    strp2 = ','.join(str(e) for e in p2)
-    return JSONResponse({'result': str(p1),'conf':strp2})
+    try:
+        img = open_image(BytesIO(img_bytes))
+        prediction = learn.predict(img)
+    except Exception as e:
+        logging.error(traceback.format_exc())
+        logging.error(e.message)
+
+    # prediction = learn.predict(img)
+    # p1 = prediction[0]
+    # p2 = prediction[2].numpy().tolist()
+    # strp2 = ','.join(str(e) for e in p2)
+    return JSONResponse({'result': "str(p1)" , 'conf':"strp2" })
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
