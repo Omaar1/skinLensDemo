@@ -20,12 +20,39 @@ function analyze() {  // on click of analze btn --> function is triggered
     el('analyze-button').innerHTML = 'Analyzing...';
 
     var xhr = new XMLHttpRequest();
-    var loc = window.location
+    var loc = window.location;
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true); // go to " /analyze "
 
-    xhr.onerror = function() {alert (xhr.responseText);}
+    // xhr.upload.onloadstart = function (e) {
+    //   console.log(uploadFiles);
+    //     uploadProgress.classList.add('visible');
+    //     uploadProgress.value = 0;
+    //     uploadProgress.max = e.total;
+    //     message.textContent = 'uploading...';
+    //     fileInput.disabled = true;
+    // };
+    // xhr.upload.onprogress = function (e) {
+    //         uploadProgress.value = e.loaded;
+    //         uploadProgress.max = e.total;
+    //         console.log("progress");
+    //
+    // };
+    // xhr.upload.onloadend = function (e) {
+    //         uploadProgress.classList.remove('visible');
+    //         message.textContent = 'complete!';
+    //         fileInput.disabled = false;
+    //         console.log("loadends");
+    //
+    // };
+
+
+    xhr.onerror = function() {
+      alert (xhr.responseText);
+      return
+    };
 
     xhr.onload = function(e) {
+        print(this.readyState);
         if (this.readyState === 4) {
             var response = e.target.responseText;
       			console.log(response);
@@ -54,10 +81,12 @@ function analyze() {  // on click of analze btn --> function is triggered
         //     el('vasc-label').innerHTML  =  arr1[6];
         // }
         el('analyze-button').innerHTML = 'Analyze';
-    }
+      }
 
-    var fileData = new FormData();
-    fileData.append('file', uploadFiles[0]);
-    xhr.send(fileData);
+      var fileData = new FormData();
+      fileData.append('file', uploadFiles[0]);
+      xhr.send(fileData);
+    };
 }
+
 //classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
