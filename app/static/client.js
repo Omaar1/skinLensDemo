@@ -48,7 +48,7 @@ function analyze() {  // on click of analze btn --> function is triggered
         //       y=Number((x).toFixed(6));
         //       arr1.push(y);
         // 	    console.log(y);
-        //     });
+            // });
         //     console.log('\n array = ');
         //     console.log(arr1);
         //
