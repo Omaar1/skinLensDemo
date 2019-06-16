@@ -69,23 +69,22 @@ def index(request):
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    logging.info('*******This is an info message*******')
-    data = await request.form()
     logging.info('*******!!!startAnalyze!!!********')
+    data = await request.form()
     # logging.info(data)
-    img_bytes = await (data['file'].read())
     try:
+        img_bytes = await (data['file'].read())
         img = open_image(BytesIO(img_bytes))
         prediction = learn.predict(img)
-    except Exception as e:
-        logging.error(traceback.format_exc())
-        logging.error(e.message)
+    except AttributeError as error:
+        # Output expected AttributeErrors.
+        logging.error(str(error))
 
     # prediction = learn.predict(img)
-    # p1 = prediction[0]
-    # p2 = prediction[2].numpy().tolist()
-    # strp2 = ','.join(str(e) for e in p2)
-    return JSONResponse({'result': "str(p1)" , 'conf':"strp2" })
+    p1 = prediction[0]
+    p2 = prediction[2].numpy().tolist()
+    strp2 = ','.join(str(e) for e in p2)
+    return JSONResponse({'result': str(p1) , 'conf':strp2 })
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)

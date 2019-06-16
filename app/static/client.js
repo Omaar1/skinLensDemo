@@ -16,35 +16,16 @@ function showPicked(input) {    //  takes a file as input (image file ! )
 
 function analyze() {  // on click of analze btn --> function is triggered
     var uploadFiles = el('file-input').files;
-    if (uploadFiles.length != 1) alert('Please select 1 file to analyze!');
+    if (uploadFiles.length != 1){
+       alert('Please select 1 file to analyze!');
+       return;
+    }
     el('analyze-button').innerHTML = 'Analyzing...';
+    console.log("analyzing....");
 
     var xhr = new XMLHttpRequest();
     var loc = window.location;
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true); // go to " /analyze "
-
-    // xhr.upload.onloadstart = function (e) {
-    //   console.log(uploadFiles);
-    //     uploadProgress.classList.add('visible');
-    //     uploadProgress.value = 0;
-    //     uploadProgress.max = e.total;
-    //     message.textContent = 'uploading...';
-    //     fileInput.disabled = true;
-    // };
-    // xhr.upload.onprogress = function (e) {
-    //         uploadProgress.value = e.loaded;
-    //         uploadProgress.max = e.total;
-    //         console.log("progress");
-    //
-    // };
-    // xhr.upload.onloadend = function (e) {
-    //         uploadProgress.classList.remove('visible');
-    //         message.textContent = 'complete!';
-    //         fileInput.disabled = false;
-    //         console.log("loadends");
-    //
-    // };
-
 
     xhr.onerror = function() {
       alert (xhr.responseText);
@@ -82,11 +63,12 @@ function analyze() {  // on click of analze btn --> function is triggered
         // }
         el('analyze-button').innerHTML = 'Analyze';
       }
+    }
 
       var fileData = new FormData();
       fileData.append('file', uploadFiles[0]);
       xhr.send(fileData);
-    };
+
 }
 
 //classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
