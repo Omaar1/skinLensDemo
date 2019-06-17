@@ -2,6 +2,8 @@ fastai
 torch
 -f https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl
 torchvision
+-f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+torch_nightly 
 starlette
 uvicorn
 python-multipart
