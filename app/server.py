@@ -79,8 +79,6 @@ async def analyze(request):
     except AttributeError as error:
         # Output expected AttributeErrors.
         logging.error(str(error))
-        # logging.error(fastai.__version__)
-        logging.error(torch.__version__)
 
     # prediction = learn.predict(img)
     p1 = prediction[0]
