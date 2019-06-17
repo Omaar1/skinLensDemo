@@ -72,13 +72,10 @@ async def analyze(request):
     logging.info('*******!!!startAnalyze!!!********')
     data = await request.form()
     # logging.info(data)
-    try:
-        img_bytes = await (data['file'].read())
-        img = open_image(BytesIO(img_bytes))
-        prediction = learn.predict(img)
-    except AttributeError as error:
-        # Output expected AttributeErrors.
-        logging.error(str(error))
+    img_bytes = await (data['file'].read())
+    img = open_image(BytesIO(img_bytes))
+    prediction = learn.predict(img)
+
 
     # prediction = learn.predict(img)
     p1 = prediction[0]
