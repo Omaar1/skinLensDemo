@@ -62,7 +62,7 @@ loop.close()
 @app.route('/')
 def index(request):
     html = path/'view'/'index.html'
-    logging.info('*******Thisstart*******')
+    logging.info(html)
     return HTMLResponse(html.open().read())
 
 
