@@ -1,4 +1,5 @@
 fastai
+torchvision
 starlette
 uvicorn
 python-multipart
