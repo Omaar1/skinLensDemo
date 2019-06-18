@@ -23,6 +23,16 @@ function classifying(){  // on click of analze btn --> function is triggered
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("classify-button").addEventListener('click',function ()
+    {
+     alert("hello");
+     el('classify-button').innerHTML = 'Classify ...';
+     console.log("********** classify....  *******");
+     //validation code to see State field is mandatory.
+    }  );
+});
+
 function showPicker(inputId) { el('file-input').click(); }
 
 function showPicked(input) {    //  takes a file as input (image file ! )
