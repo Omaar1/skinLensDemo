@@ -74,11 +74,16 @@ def index(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     logging.info('*******!!!startAnalyze!!!********')
-    data = await request.form()
+    # data = await request.form()
+
+    file = request.files['pic']
+    filename = file.filename
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
     # logging.info(data)
-    img_bytes = await (data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)
+    # img_bytes = await (data['file'].read())
+    # img = open_image(BytesIO(img_bytes))
+    prediction = learn.predict(filename)
 
 
     # prediction = learn.predict(img)
