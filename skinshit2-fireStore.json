@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "skinshit2",
+  "private_key_id": "786e5b86719140f4d1c2eb4a0e8933462c22b1bc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCgoLSy6zxsi7OP\npt3qaqGecqa4K9DML+gumIXSWEjxZ8wBcmwFiSc1yWSZfM7aSJeQ/IV+5KyrQSbC\nnwY1a43Pk6oBv0PcjMq+AMG56ir18ynNt9PWhi6r2SIIZ/6hFHfvIQjEIKKSTZde\nfZbJQWNNuBqShWr6qRqL075EgZvUiJZztp1y7K43O5L2BNbIZ7djIiL9e/Nsd1iv\nhJhHz8IRMRaaKt5QsiVjQvytASYZWdefXC35dikrFqrY/kHfIvMPzR5CV9qAWME6\n93oKyYuJQZPhcGn5Kj8U1FAUiPJBrC4VOqIvQ7k993STcrB/P0viGgJf2GiK6zOU\nWrwT593lAgMBAAECggEAJOXVrHXx+uM6e6iyuGsHNj0TBCJ4g7cLiEycDP4fv2h/\nCeQNYVYorifVlpZ/c9ASFQmU5tnDulEshK9//xx2RnUeq+kSPyMOXYgR+FGMzdOu\nSiXMoS5QoUQvF6w/5yOrC0DU4Sy3+5CcUWXbEd8V3yAH5pmEQhE/WlhpEBaPw8nB\nRZyt++zRzLOFfbnSYQp4O1l/M6U08TF6gzGnDgphMZS+JVEOBwqqNRTDM/NWmqI0\nM4uDrRbqXM1M+UmQU9VyBvFk/96qzzZQnSTEzfDfZ4baHZntEqCc8qJnkij910r7\npn43KJ/6dYlLCzkz4rKlWlvBsGpdE5HXmTga2XB1XwKBgQDQ1PXP5Hdc2xmlbRIb\nMTANdNGWEXkMewIMLM0xloO+YYTWNlYBqxdgcHy0hACH+8O0YuTnrUSz059tbSZG\n9MDD3GZVT5F/rMY4qJpJnO30o5dWYthGlBvoMusm2ujFKa4FneMVTrN5t9KimL0/\ne930qScjMlb5Qx3E904xeOXjtwKBgQDE6H7hw9cGJ8tnXLrrxJJwkWnANvhs9dr1\nhOpttlk29xGl1OKSC3pAc1uDC2ETsBQLaqfwVhAfARHX9/jFqHNyWt8E2h+X5stX\nXD1OT8gYkc8/uRLIc6SeZpo2Xmf7xlRxGlpjNZ6bekdUjRDKMm6la1lta7EKPRUP\n8j1wE77jQwKBgG69T3CjxYwu/4WStjRHPCUWmoGK2Hb+z9Im+9Tc7RXK3sc9XxRZ\nZvcUD30mNqXlox0ICDy2zCTUBsnfRJoB9iqmuHlqzUw4EZFADzkUB7df/MOpfOjI\nZ5gVUE91bFQJSyfdVusYpeHY0dC5UDnW9JdmD8QBUM+zgJjPT966LqY3AoGAY8ut\nmsCFtwHuLemqdpl+2nxoS1nQ2HBWU77UjVwwpRHdKN3XIsucXxPYGndm8PJ5hju8\n96q2qvAA2iM8Ovkf4aI6i5v9DSCUiCcgjxMSR5mGnzYuVdd+ZCV+HPYF323qGBSS\nINvpEcWMZ0bDbqbWuxHIFhPRe23vwdA04Ruw0D8CgYAaJdNn9a1p4k1fFCdfAp7M\nKvnfqmijjFh8seBqGVPxPgnir5yAgcDwfDfpl1i87DeK3Ev3d794V6QGCfcPAhqa\n2hrRgqIxHwHew6OsJt7TO8o8e45jgx/prSYVS8gkflZhlzXq1L7bbA++1Jq6yQvJ\ned+VoAD5h/1kqil3qkOF6Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firestoreskinshit2@skinshit2.iam.gserviceaccount.com",
+  "client_id": "111949341047079119176",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestoreskinshit2%40skinshit2.iam.gserviceaccount.com"
+}

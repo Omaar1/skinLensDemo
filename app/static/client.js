@@ -33,34 +33,34 @@ function analyze() {  // on click of analze btn --> function is triggered
     };
 
     xhr.onload = function(e) {
-        print(this.readyState);
         if (this.readyState === 4) {
-            var response = e.target.responseText;
+            var response = JSON.parse(e.target.responseText);
       			console.log(response);
-      	//		console.log(response.result);
-      	//		console.log(response.conf);
-      	//		console.log(e.target.responseText);
-        //     var arr1 = [];
-        //     str1 = response.conf;
-        //     myArray = str1.split(',')
-        //     myArray.forEach(function(element) {
-        //   	  x= parseFloat(element);
-        //       y=Number((x).toFixed(6));
-        //       arr1.push(y);
-        // 	    console.log(y);
-            // });
-        //     console.log('\n array = ');
-        //     console.log(arr1);
-        //
-        //     el('result-label').innerHTML = `Result = ${response['result']}`;
-      	// 		el('akiec-label').innerHTML =  arr1[0];
-        //     el('bcc-label').innerHTML   =  arr1[1];
-        //     el('bkl-label').innerHTML   =  arr1[2];
-        //     el('df-label').innerHTML    =  arr1[3];
-        //     el('mel-label').innerHTML   =  arr1[4];
-        //     el('nv-label').innerHTML    =  arr1[5];
-        //     el('vasc-label').innerHTML  =  arr1[6];
-        // }
+      			console.log(response.result);
+      			console.log(response.conf);
+      			console.log(e.target.responseText);
+            var arr1 = [];
+            str1 = response.conf;
+
+            myArray = str1.split(',')
+            myArray.forEach(function(element) {
+          	  x= parseFloat(element);
+              y=Number((x).toFixed(6));
+              arr1.push(y);
+        	    console.log(y);
+            });
+            console.log('\n array = ');
+            console.log(arr1);
+
+            el('result-label').innerHTML = `Result = ${response['result']}`;
+      			el('akiec-label').innerHTML =  arr1[0];
+            el('bcc-label').innerHTML   =  arr1[1];
+            el('bkl-label').innerHTML   =  arr1[2];
+            el('df-label').innerHTML    =  arr1[3];
+            el('mel-label').innerHTML   =  arr1[4];
+            el('nv-label').innerHTML    =  arr1[5];
+            el('vasc-label').innerHTML  =  arr1[6];
+
         el('analyze-button').innerHTML = 'Analyze';
       }
     }
@@ -72,3 +72,28 @@ function analyze() {  // on click of analze btn --> function is triggered
 }
 
 //classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+//
+//
+
+function classify() {  // on click of analze btn --> function is triggered
+
+    el('analyze-button').innerHTML = 'Classify ...';
+    console.log("********** classify....  *******");
+
+    var xhr = new XMLHttpRequest();
+    var loc = window.location;
+    xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
+
+    xhr.onerror = function() {
+      alert (xhr.responseText);
+      return;
+    };
+
+    xhr.onload = function(e) {
+        if (this.readyState === 4) {
+      			console.log(e);
+            el('classify-button').innerHTML = 'Classify';
+      }
+    }
+
+}

@@ -6,3 +6,5 @@ uvicorn
 python-multipart
 aiofiles
 aiohttp
+google-cloud-firestore
+google-cloud-storage
