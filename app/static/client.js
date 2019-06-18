@@ -79,7 +79,7 @@ function analyze() {  // on click of analze btn --> function is triggered
           var response = JSON.parse(e.target.responseText);
       			console.log(response);
       			console.log(response.result);
-      			console.log(response.conf);
+      			//console.log(response.conf);
       			// console.log(e.target.responseText);
             var arr1 = [];
             str1 = response.conf;
@@ -102,9 +102,9 @@ function analyze() {  // on click of analze btn --> function is triggered
             el('mel-label').innerHTML   =  arr1[4];
             el('nv-label').innerHTML    =  arr1[5];
             el('vasc-label').innerHTML  =  arr1[6];
-
+          }
         el('analyze-button').innerHTML = 'Analyze';
-      }
+
     }
 
       var fileData = new FormData();

@@ -3,7 +3,7 @@
         <meta charset='utf-8'>
         <link rel='stylesheet' href='../static/style.css'>
         <script src='../static/client.js'></script>
-        <!-- <script src='../static/file-upload-progress-bar.js'></script> -->
+
 
 
 
@@ -21,7 +21,7 @@
                             accept='image/*'
                             onchange='showPicked(this)'>
                     </div>
-                    <button class='choose-file-button' type='button' onclick='showPicker()'> Select Image </button>
+                    <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
                     <div class='upload-label'>
                         <label id='upload-label'>No file chosen</label>
                     </div>
@@ -31,9 +31,11 @@
                     <div class='analyze'>
                         <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
                     </div>
+
                     <div class='classify'>
                         <button id='classify-button' class='classify-button' type='button' onclick='classifying()'>classify</button>
                     </div>
+                    
                     <div class='result-label'>
                         <label id='result-label'></label><br /><br />
                         <label id='akiec-label'></label><br /><br />
@@ -43,8 +45,6 @@
                         <label id='mel-label'></label><br /><br />
                         <label id='nv-label'></label><br /><br />
                         <label id='vasc-label'></label><br /><br />
-                    </div>
-
                     </div>
                 </div>
             </div>

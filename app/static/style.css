@@ -60,9 +60,6 @@ button.analyze-button {
     font-size: 13px;
     color: #ffffff;
 }
-
-button:focus {outline:0;}
-
 button.classify-button {
     width: 200px;
     height: 40px;
@@ -72,3 +69,5 @@ button.classify-button {
     font-size: 13px;
     color: #ffffff;
 }
+
+button:focus {outline:0;}
