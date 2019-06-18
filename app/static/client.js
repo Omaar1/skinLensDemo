@@ -26,10 +26,21 @@ function classifying(){  // on click of analze btn --> function is triggered
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("classify-button").addEventListener('click',function ()
     {
-     alert("hello");
-     el('classify-button').innerHTML = 'Classify ...';
-     console.log("********** classify....  *******");
-     //validation code to see State field is mandatory.
+     alert("hello");  /// --1
+     el('classify-button').innerHTML = 'Classify ...'; /// ---2
+     console.log("********** classify....  *******"); //// ----3
+     //XMLHttpRequest
+     var xhr = new XMLHttpRequest();
+     var loc = window.location;
+     xhr.open('GET', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /classify "
+     request.send(null);
+
+     request.onreadystatechange = function() {
+       if (request.readyState == 4)
+         console.log(request.responseText); /// ----4
+     };
+
+
     }  );
 });
 

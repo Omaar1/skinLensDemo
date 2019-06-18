@@ -89,7 +89,7 @@ async def analyze(request):
 
 
 
-@app.route('/classify' , methods=['POST'])
+@app.route('/classify' , methods=['GET'])
 async def classify(request):
     logging.info('*******classificaaa********')
     db = firestore.Client()
@@ -98,7 +98,8 @@ async def classify(request):
         u'first': u'Omar',
         u'last': u'Sayed',
         u'born': 1996
-})
+    })
+    return JSONResponse({'result': "resss" })
 
 
 
