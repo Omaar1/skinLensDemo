@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
      var xhr = new XMLHttpRequest();
      var loc = window.location;
      xhr.open('GET', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /classify "
-     request.send(null);
+     xhr.send(null);
 
-     request.onreadystatechange = function() {
-       if (request.readyState == 4)
+     xhr.onreadystatechange = function() {
+       if (this.readyState == 4)
          console.log(request.responseText); /// ----4
      };
 
