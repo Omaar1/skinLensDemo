@@ -75,9 +75,9 @@ function analyze() {  // on click of analze btn --> function is triggered
 //
 //
 
-function classify() {  // on click of analze btn --> function is triggered
+function classifying() {  // on click of analze btn --> function is triggered
 
-    el('analyze-button').innerHTML = 'Classify ...';
+    el('classify-button').innerHTML = 'Classify ...';
     console.log("********** classify....  *******");
 
     var xhr = new XMLHttpRequest();
