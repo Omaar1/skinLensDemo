@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("classify-button").addEventListener('click',function ()
     {
      alert("hello");  /// --1
-     el('classify-button').innerHTML = 'Classify ...'; /// ---2
+     el('classify-button').innerHTML = 'Classifying ...'; /// ---2
      console.log("********** classify....  *******"); //// ----3
      //XMLHttpRequest
      var xhr = new XMLHttpRequest();
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
      xhr.onreadystatechange = function() {
        if (this.readyState == 4)
-         console.log(request.responseText); /// ----4
+         console.log(xhr.responseText); /// ----4
      };
 
 
