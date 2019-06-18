@@ -1,6 +1,27 @@
 
 
 var el = x => document.getElementById(x);
+function classifying(){  // on click of analze btn --> function is triggered
+
+    el('classify-button').innerHTML = 'Classify ...';
+    console.log("********** classify....  *******");
+
+    var xhr = new XMLHttpRequest();
+    var loc = window.location;
+    xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
+
+    xhr.onerror = function() {
+      alert (xhr.responseText);
+      return;
+    }
+
+    xhr.onload = function(e) {
+        if (this.readyState === 4) {
+      			console.log(e);
+            el('classify-button').innerHTML = 'Classify';
+      }
+    }
+}
 
 function showPicker(inputId) { el('file-input').click(); }
 
@@ -34,15 +55,15 @@ function analyze() {  // on click of analze btn --> function is triggered
 
     xhr.onload = function(e) {
         if (this.readyState === 4) {
-            var response = JSON.parse(e.target.responseText);
+          var response = JSON.parse(e.target.responseText);
       			console.log(response);
       			console.log(response.result);
       			console.log(response.conf);
-      			console.log(e.target.responseText);
+      			// console.log(e.target.responseText);
             var arr1 = [];
             str1 = response.conf;
 
-            myArray = str1.split(',')
+            myArray = str1.split(',');
             myArray.forEach(function(element) {
           	  x= parseFloat(element);
               y=Number((x).toFixed(6));
@@ -74,26 +95,3 @@ function analyze() {  // on click of analze btn --> function is triggered
 //classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 //
 //
-
-function classifying() {  // on click of analze btn --> function is triggered
-
-    el('classify-button').innerHTML = 'Classify ...';
-    console.log("********** classify....  *******");
-
-    var xhr = new XMLHttpRequest();
-    var loc = window.location;
-    xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
-
-    xhr.onerror = function() {
-      alert (xhr.responseText);
-      return;
-    };
-
-    xhr.onload = function(e) {
-        if (this.readyState === 4) {
-      			console.log(e);
-            el('classify-button').innerHTML = 'Classify';
-      }
-    }
-
-}
