@@ -95,13 +95,13 @@ function analyze() {  // on click of analze btn --> function is triggered
             console.log(arr1);
 
             el('result-label').innerHTML = `Result = ${response['result']}`;
-      			el('akiec-label').innerHTML =  arr1[0];
-            el('bcc-label').innerHTML   =  arr1[1];
-            el('bkl-label').innerHTML   =  arr1[2];
-            el('df-label').innerHTML    =  arr1[3];
-            el('mel-label').innerHTML   =  arr1[4];
-            el('nv-label').innerHTML    =  arr1[5];
-            el('vasc-label').innerHTML  =  arr1[6];
+      			el('akiec-label').innerHTML =  "Actinic keratoses and intraepithelial carcinoma / Bowen's disease  (Akiec) : "+arr1[0];
+            el('bcc-label').innerHTML   =  "Basal cell carcinoma (BCC) : " +arr1[1];
+            el('bkl-label').innerHTML   =   "Benign keratosis-like lesions (BKL) : " + arr1[2];
+            el('df-label').innerHTML    =   "Dermatofibroma (DF) : " +arr1[3];
+            el('mel-label').innerHTML   =   "Melanoma (Mel) : " +arr1[4];
+            el('nv-label').innerHTML    =   "Melanocytic nevi (nv) : " +arr1[5];
+            el('vasc-label').innerHTML  =   "Vascular lesions (Vasc) : " +arr1[6];
           }
         el('analyze-button').innerHTML = 'Analyze';
 
@@ -113,6 +113,6 @@ function analyze() {  // on click of analze btn --> function is triggered
 
 }
 
-//classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+// classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 //
 //
