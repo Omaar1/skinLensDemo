@@ -75,8 +75,6 @@ def index(request):
 async def analyze(request):
     logging.info('*******!!!logging request!!!********')
     logging.info(request)
-    logging.info(vars(request))
-    logging.info(vars(request))
 
     data = await request.form()
     logging.info('*******!!!logging data!!!********')
