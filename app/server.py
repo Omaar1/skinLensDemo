@@ -73,23 +73,37 @@ def index(request):
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    logging.info('*******!!!startAnalyze!!!********')
-    # data = await request.form()
+    logging.info('*******!!!logging request!!!********')
+    logging.info(request)
 
-    file = request.files['pic']
-    filename = file.filename
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        
-    # logging.info(data)
-    # img_bytes = await (data['file'].read())
-    # img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(filename)
+    data = await request.form()
+    logging.info('*******!!!logging data!!!********')
+    logging.info(data)
+
+    img_bytes = await (data['file'].read())
+    logging.info('*******!!!logging img_bytes!!!********')
+    logging.info(img_bytes)
+    img = open_image(BytesIO(img_bytes))
+
+    # file = request.files['pic']
+    # filename = file.filename
+    # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 
-    # prediction = learn.predict(img)
+    # prediction = learn.predict(filename)
+    prediction = learn.predict(img)
     p1 = prediction[0]
     p2 = prediction[2].numpy().tolist()
     strp2 = ','.join(str(e) for e in p2)
+
+
+    logging.info('*******writing to DB********')
+    db = firestore.Client()
+    doc_ref = db.collection(u'result').document( )
+    doc_ref.set({
+            u'result': str(p1),
+            u'confidence': strp2
+    })
     return JSONResponse({'result': str(p1) , 'conf':strp2 })
 
 
