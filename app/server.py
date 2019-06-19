@@ -75,14 +75,16 @@ def index(request):
 async def analyze(request):
     logging.info('*******!!!logging request!!!********')
     logging.info(request)
+    logging.info(dir(request))
+    logging.info(vars(request))
 
     data = await request.form()
     logging.info('*******!!!logging data!!!********')
     logging.info(data)
 
     img_bytes = await (data['file'].read())
-    logging.info('*******!!!logging img_bytes!!!********')
-    logging.info(img_bytes)
+    # logging.info('*******!!!logging img_bytes!!!********')
+    # logging.info(img_bytes)
     img = open_image(BytesIO(img_bytes))
 
     # file = request.files['pic']
