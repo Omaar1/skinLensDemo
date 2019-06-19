@@ -1,48 +1,48 @@
 
 
 var el = x => document.getElementById(x);
-// function classifying(){  // on click of analze btn --> function is triggered
-//
-//     el('classify-button').innerHTML = 'Classify ...';
-//     console.log("********** classify....  *******");
-//
-//     var xhr = new XMLHttpRequest();
-//     var loc = window.location;
-//     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
-//
-//     xhr.onerror = function() {
-//       alert (xhr.responseText);
-//       return;
-//     }
-//
-//     xhr.onload = function(e) {
-//         if (this.readyState === 4) {
-//       			console.log(e);
-//             el('classify-button').innerHTML = 'Classify';
-//       }
-//     }
-// }
-//
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("classify-button").addEventListener('click',function ()
-//     {
-//      alert("hello");  /// --1
-//      el('classify-button').innerHTML = 'Classifying ...'; /// ---2
-//      console.log("********** classify....  *******"); //// ----3
-//      //XMLHttpRequest
-//      var xhr = new XMLHttpRequest();
-//      var loc = window.location;
-//      xhr.open('GET', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /classify "
-//      xhr.send(null);
-//
-//      xhr.onreadystatechange = function() {
-//        if (this.readyState == 4)
-//          console.log(xhr.responseText); /// ----4
-//      };
-//
-//
-//     }  );
-// });
+function classifying(){  // on click of analze btn --> function is triggered
+
+    el('classify-button').innerHTML = 'Classify ...';
+    console.log("********** classify....  *******");
+
+    var xhr = new XMLHttpRequest();
+    var loc = window.location;
+    xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
+
+    xhr.onerror = function() {
+      alert (xhr.responseText);
+      return;
+    }
+
+    xhr.onload = function(e) {
+        if (this.readyState === 4) {
+      			console.log(e);
+            el('classify-button').innerHTML = 'Classify';
+      }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("classify-button").addEventListener('click',function ()
+    {
+     alert("hello");  /// --1
+     el('classify-button').innerHTML = 'Classifying ...'; /// ---2
+     console.log("********** classify....  *******"); //// ----3
+     //XMLHttpRequest
+     var xhr = new XMLHttpRequest();
+     var loc = window.location;
+     xhr.open('GET', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /classify "
+     xhr.send(null);
+
+     xhr.onreadystatechange = function() {
+       if (this.readyState == 4)
+         console.log(xhr.responseText); /// ----4
+     };
+
+
+    }  );
+});
 
 function showPicker(inputId) { el('file-input').click(); }
 
