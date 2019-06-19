@@ -1,29 +1,8 @@
 
 
 var el = x => document.getElementById(x);
-function classifying(){  // on click of analze btn --> function is triggered
 
-    el('classify-button').innerHTML = 'Classify ...';
-    console.log("********** classify....  *******");
 
-    var xhr = new XMLHttpRequest();
-    var loc = window.location;
-    xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /analyze "
-
-    xhr.onerror = function() {
-      alert (xhr.responseText);
-      return;
-    }
-
-    xhr.onload = function(e) {
-        if (this.readyState === 4) {
-      			console.log(e);
-            el('classify-button').innerHTML = 'Classify';
-      }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("classify-button").addEventListener('click',function ()
     {
      alert("hello");  /// --1
@@ -79,8 +58,7 @@ function analyze() {  // on click of analze btn --> function is triggered
           var response = JSON.parse(e.target.responseText);
       			console.log(response);
       			console.log(response.result);
-      			//console.log(response.conf);
-      			// console.log(e.target.responseText);
+
             var arr1 = [];
             str1 = response.conf;
 
@@ -95,7 +73,7 @@ function analyze() {  // on click of analze btn --> function is triggered
             console.log(arr1);
 
             el('result-label').innerHTML = `Result = ${response['result']}`;
-      			el('akiec-label').innerHTML =  "Actinic keratoses and intraepithelial carcinoma (Akiec) : "+arr1[0];
+      		el('akiec-label').innerHTML =  "Actinic keratoses and intraepithelial carcinoma (Akiec) : "+arr1[0];
             el('bcc-label').innerHTML   =  "Basal cell carcinoma (BCC) : " +arr1[1];
             el('bkl-label').innerHTML   =   "Benign keratosis-like lesions (BKL) : " + arr1[2];
             el('df-label').innerHTML    =   "Dermatofibroma (DF) : " +arr1[3];

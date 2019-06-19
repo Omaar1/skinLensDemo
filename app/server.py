@@ -10,8 +10,6 @@ import logging
 from fastai import *
 from fastai.vision import *
 
-from google.cloud import firestore
-from google.cloud import storage
 
 
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
@@ -74,51 +72,21 @@ def index(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     logging.info('*******!!!logging request!!!********')
-    logging.info(request)
 
     data = await request.form()
     logging.info('*******!!!logging data!!!********')
-    logging.info(data)
 
     img_bytes = await (data['file'].read())
-    # logging.info('*******!!!logging img_bytes!!!********')
-    # logging.info(img_bytes)
+
     img = open_image(BytesIO(img_bytes))
 
-    # file = request.files['pic']
-    # filename = file.filename
-    # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-
-    # prediction = learn.predict(filename)
     prediction = learn.predict(img)
     p1 = prediction[0]
     p2 = prediction[2].numpy().tolist()
     strp2 = ','.join(str(e) for e in p2)
 
 
-    logging.info('*******writing to DB********')
-    db = firestore.Client()
-    doc_ref = db.collection(u'result').document( )
-    doc_ref.set({
-            u'result': str(p1),
-            u'confidence': strp2
-    })
     return JSONResponse({'result': str(p1) , 'conf':strp2 })
-
-
-
-@app.route('/classify' , methods=['GET'])
-async def classify(request):
-    logging.info('*******classificaaa********')
-    db = firestore.Client()
-    doc_ref = db.collection(u'users').document( )
-    doc_ref.set({
-        u'first': u'Omar',
-        u'last': u'Sayed',
-        u'born': 1996
-    })
-    return JSONResponse({'result': "resss" })
 
 
 
