@@ -3,25 +3,6 @@
 var el = x => document.getElementById(x);
 
 
-    document.getElementById("classify-button").addEventListener('click',function ()
-    {
-     alert("hello");  /// --1
-     el('classify-button').innerHTML = 'Classifying ...'; /// ---2
-     console.log("********** classify....  *******"); //// ----3
-     //XMLHttpRequest
-     var xhr = new XMLHttpRequest();
-     var loc = window.location;
-     xhr.open('GET', `${loc.protocol}//${loc.hostname}:${loc.port}/classify`, true); // go to " /classify "
-     xhr.send(null);
-
-     xhr.onreadystatechange = function() {
-       if (this.readyState == 4)
-         console.log(xhr.responseText); /// ----4
-     };
-
-
-    }  );
-});
 
 function showPicker(inputId) { el('file-input').click(); }
 
