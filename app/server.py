@@ -10,8 +10,8 @@ import logging
 from fastai import *
 from fastai.vision import *
 
-from google.cloud import firestore
-from google.cloud import storage
+# from google.cloud import firestore
+# from google.cloud import storage
 
 
 classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
@@ -98,14 +98,14 @@ async def analyze(request):
     p2 = prediction[2].numpy().tolist()
     strp2 = ','.join(str(e) for e in p2)
 
-
-    logging.info('*******writing to DB********')
-    db = firestore.Client()
-    doc_ref = db.collection(u'result').document( )
-    doc_ref.set({
-            u'result': str(p1),
-            u'confidence': strp2
-    })
+    #
+    # logging.info('*******writing to DB********')
+    # db = firestore.Client()
+    # doc_ref = db.collection(u'result').document( )
+    # doc_ref.set({
+    #         u'result': str(p1),
+    #         u'confidence': strp2
+    # })
     return JSONResponse({'result': str(p1) , 'conf':strp2 })
 
 
@@ -113,13 +113,13 @@ async def analyze(request):
 @app.route('/classify' , methods=['GET'])
 async def classify(request):
     logging.info('*******classificaaa********')
-    db = firestore.Client()
-    doc_ref = db.collection(u'users').document( )
-    doc_ref.set({
-        u'first': u'Omar',
-        u'last': u'Sayed',
-        u'born': 1996
-    })
+    # db = firestore.Client()
+    # doc_ref = db.collection(u'users').document( )
+    # doc_ref.set({
+    #     u'first': u'Omar',
+    #     u'last': u'Sayed',
+    #     u'born': 1996
+    # })
     return JSONResponse({'result': "resss" })
 
 
