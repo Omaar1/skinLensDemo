@@ -31,33 +31,33 @@ app.mount('/static', StaticFiles(directory='app/static'))
 
 ### Downloading the trained model
 
-async def download_file(url, dest):
-    if dest.exists(): return
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            data = await response.read()
-            with open(dest, 'wb') as f: f.write(data)
-
-async def setup_learner():
-    await download_file(export_file_url, path/export_file_name)
-
-    try:
-
-        learn = load_learner(path, export_file_name)
-        return learn
-    except RuntimeError as e:
-        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
-            print(e)
-            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
-            raise RuntimeError(message)
-        else:
-            raise
+# async def download_file(url, dest):
+#     if dest.exists(): return
+#     async with aiohttp.ClientSession() as session:
+#         async with session.get(url) as response:
+#             data = await response.read()
+#             with open(dest, 'wb') as f: f.write(data)
 #
+# async def setup_learner():
+#     await download_file(export_file_url, path/export_file_name)
 #
-loop = asyncio.get_event_loop()
-tasks = [asyncio.ensure_future(setup_learner())]
-learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
-loop.close()
+#     try:
+#
+#         learn = load_learner(path, export_file_name)
+#         return learn
+#     except RuntimeError as e:
+#         if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+#             print(e)
+#             message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
+#             raise RuntimeError(message)
+#         else:
+#             raise
+# #
+# #
+# loop = asyncio.get_event_loop()
+# tasks = [asyncio.ensure_future(setup_learner())]
+# learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+# loop.close()
 
 
 
@@ -68,25 +68,25 @@ def index(request):
     return HTMLResponse(html.open().read())
 
 
-
-@app.route('/analyze', methods=['POST'])
-async def analyze(request):
-    logging.info('*******!!!logging request!!!********')
-
-    data = await request.form()
-    logging.info('*******!!!logging data!!!********')
-
-    img_bytes = await (data['file'].read())
-
-    img = open_image(BytesIO(img_bytes))
-
-    prediction = learn.predict(img)
-    p1 = prediction[0]
-    p2 = prediction[2].numpy().tolist()
-    strp2 = ','.join(str(e) for e in p2)
-
-
-    return JSONResponse({'result': str(p1) , 'conf':strp2 })
+#
+# @app.route('/analyze', methods=['POST'])
+# async def analyze(request):
+#     logging.info('*******!!!logging request!!!********')
+#
+#     data = await request.form()
+#     logging.info('*******!!!logging data!!!********')
+#
+#     img_bytes = await (data['file'].read())
+#
+#     img = open_image(BytesIO(img_bytes))
+#
+#     prediction = learn.predict(img)
+#     p1 = prediction[0]
+#     p2 = prediction[2].numpy().tolist()
+#     strp2 = ','.join(str(e) for e in p2)
+#
+#
+#     return JSONResponse({'result': str(p1) , 'conf':strp2 })
 
 
 
